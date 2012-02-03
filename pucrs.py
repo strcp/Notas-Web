@@ -48,7 +48,7 @@ class Aluno:
 		if tmp is not None:
 			self.info['nome'] = tmp.next.string.strip().title()
 
-		tmp = soup.find(text = u'Matr√≠cula:')
+		tmp = soup.find(text = u'MatrÌcula:')
 		if tmp is not None:
 			self.info['matricula'] = tmp.next.string.strip().replace('-', '')
 
@@ -183,7 +183,6 @@ class Aluno:
 		tmp = soup.html.body.table
 
 		if tmp is None:
-			print "Oooops!"
 			return curso
 
 		while ('\n' in tmp):
@@ -245,7 +244,7 @@ def parse_pucrs(request, username, password):
 		# TODO: Verificar se o usu√°rio foi bloqueado por excesso de tentativas com senha errada.
 		if len(s) > 0 and "Acesso Negado" in s[0].text:
 			ret = {}
-			ret['error'] = "Acesso negado. Usu√°rio ou senha inv√°lidos."
+			ret['error'] = "Acesso negado. Usu·rio ou senha inv·lidos."
 
 			html = "%s" % simplejson.dumps(ret)
 			return HttpResponse(html)
@@ -256,5 +255,5 @@ def parse_pucrs(request, username, password):
 		html = "%s" % simplejson.dumps(aluno.info)
 		return HttpResponse(html)
 	except:
-		return HttpResponse("{\"error\":\"Imposs√vel acessar o servidor da PUCRS. Tente novamente mais tarde.\"}")
+		return HttpResponse("{\"error\":\"ImpossÌvel acessar o servidor da PUCRS. Tente novamente mais tarde.\"}")
 
