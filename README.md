@@ -17,7 +17,7 @@ Junto no repositório esta um exemplo: url.py.
 
 Retorno JSON
 ----------
-O retorno das funções de parse retornam as informações de notas do aluno requisitado em formato JSON.
+As funções de parse retornam as informações de notas do aluno requisitado em formato JSON.
 Exemplo do retorno de uma requisição feita pela função `parse_pucrs`:
 
 ``` JSON
