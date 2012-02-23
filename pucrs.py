@@ -1,12 +1,12 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+#
 # This file is part of Notas-Web. Notas-Web is free software: you can
 # redistribute it and/or modify it under the terms of the GNU General Public
 # License as published by the Free Software Foundation, version 2.
 #
 # This program is distributed in the hope that it will be useful, but WITHOUT
 # ANY WARRANTY. See the GNU General Public License for more details
-#
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
 
 import urllib
 import urllib2
@@ -55,7 +55,7 @@ class Aluno:
 		if tmp is not None:
 			self.info['nome'] = tmp.next.string.strip().title()
 
-		tmp = soup.find(text = u'Matr�cula:')
+		tmp = soup.find(text = u'Matrícula:')
 		if tmp is not None:
 			self.info['matricula'] = tmp.next.string.strip().replace('-', '')
 
@@ -251,7 +251,7 @@ def parse_pucrs(request, username, password):
 		# TODO: Verificar se o usuário foi bloqueado por excesso de tentativas com senha errada.
 		if len(s) > 0 and "Acesso Negado" in s[0].text:
 			ret = {}
-			ret['error'] = "Acesso negado. Usu�rio ou senha inv�lidos."
+			ret['error'] = "Acesso negado. Usuário ou senha inválidos."
 
 			html = "%s" % simplejson.dumps(ret)
 			return HttpResponse(html)
@@ -262,5 +262,5 @@ def parse_pucrs(request, username, password):
 		html = "%s" % simplejson.dumps(aluno.info)
 		return HttpResponse(html)
 	except:
-		return HttpResponse("{\"error\":\"Imposs�vel acessar o servidor da PUCRS. Tente novamente mais tarde.\"}")
+		return HttpResponse("{\"error\":\"Impossível acessar o servidor da PUCRS. Tente novamente mais tarde.\"}")
 
